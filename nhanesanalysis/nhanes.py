@@ -5,21 +5,18 @@ import collections as c
 import seaborn as sns
 
 # Reading the Dataset
-load("D:/Dropbox/R/123.RData")
-setwd("D:/Dropbox/R")
-
-df= pd.read_csv("nhanes_2015_2016.txt")
-
+df= pd.read_csv("nhanesanalysis/nhanes_2015_2016.txt")
+df.head()
 #Exploring the Datasets
 df.shape
 df.head()
-df.info #
+df.info 
 df.describe() # Overview on Mean, Count, Std, Min, Max and Interquatile range
 
 #Checking for missing data
 # dropna=False to keep NaN values in count, sort_index() to sort in order
 df.value_counts(dropna=False).sort_index() 
-df.ALQ101.isna.sum() #verfiying that missing data matches dict
+df.ALQ101.isna().sum() #verfiying that missing data matches dict
 (df.BPXDI2>df.BPXSY2).sum() # Verifying if any BP measures are unusual when Di>SY
 
 #Visualising Dataset
@@ -41,7 +38,7 @@ df.SMQ020[(df.SMQ020<3)] #check if data has been edited.
 
 
 #Visualising Smoking vs Drinking
-fig.ax = plt.subplots(figsize=(12,6))
+fig,ax = plt.subplots(figsize=(12,6))
 x= df['drink'][df.DMDCITZN<9]
 y= df['SMQ020'][df.DMDCITZN<9]
 z= df.DMDCITZN[df.DMDCITZN<9]
@@ -58,13 +55,14 @@ i = sorted(i.items())  # Sorting the counted values
 i
 b= [x[0] for x in i] # setting Bin categories
 a=c.Counter(df.ALQ130[(df.ALQ130 >=1) & (df.ALQ130<=15)]).values()
-fig, ax=plt.subplots(figsize=(8,6), (1,2,1)) # Setting figure size
+fig, ax=plt.subplots((1,2,1), figsize=(8,6) ) # Setting figure size
 fig = plt.figure(constrained_layout=True)
 plt.bar(b,a) # Plotting Bar chart
 plt.title("Number of Drinks per month", loc='left')
 plt.xlabel("Number of Drinks")
 plt.ylabel("Number of People")
 plt.show() 
+
 plt.clf()
 
 
@@ -78,7 +76,6 @@ race_freq = list(race_n.values())
 fig, ax=plt.subplots(1,2,2)
 plt.bar(race_cat, race_freq, tick_label=race_label)
 plt.title("Distribution of Race")
-plt.clf()
 plt.show()
 
 #Visualising weight distribution according to race
@@ -213,6 +210,7 @@ with sns.axes_style('white'):
         plt.show()
 
 #Uni- and Bi- varate Analysis
+## Function to describe and plot horizontal bar chart
 def categorical_summarized(df, x=None, y=None, hue=None, palette='Set1', verbose=True):
     '''
     Helper function that gives a quick summary of a given column of categorical data
