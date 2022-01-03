@@ -14,4 +14,4 @@
   - Compare within sample population
   - Compare between each Ethnic group
   
-# Project two
+# Project Two - Analysing Framingham Heart Study
