@@ -1,4 +1,6 @@
-# Project One - Conducting Descriptive and Visualisation on NHANES Dataset
+# Project Descriptions
+
+## Project One - Conducting Descriptive and Visualisation on NHANES Dataset
 
 - Using NHANES Data to conduct exploratory Analysis
   - Visualising the age distribution of the data
@@ -14,4 +16,6 @@
   - Compare within sample population
   - Compare between each Ethnic group
   
-# Project Two - Analysing Framingham Heart Study
+## Project Two - Analysing Framingham Heart Study
+
+1. Data Cleaning and Exploratory Data Analysis
