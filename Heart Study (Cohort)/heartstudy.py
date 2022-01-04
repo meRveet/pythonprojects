@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from pandas_profiling import ProfileReport as pr
 
-df = pd.read_csv('D:\\Dropbox\\PythonProjects\\pythonprojects\\Framingham Heart Study (Cohort)\\framingham.txt')
+df = pd.read_csv('D:\\Dropbox\\PythonProjects\\pythonprojects\\Framingham Heart Study (Cohort)\\subset.txt')
 df
 
 #Using profiler to quickly explore the dataset
